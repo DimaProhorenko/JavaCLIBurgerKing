@@ -34,11 +34,6 @@ public class Burger {
 
     @Override
     public String toString() {
-        return "Burger{" +
-                "name='" + name + '\'' +
-                ", price=" + price +
-                ", meatType=" + meatType +
-                ", burgerBun=" + burgerBun +
-                '}';
+        return String.format("%s - %.2f$", name, price);
     }
 }

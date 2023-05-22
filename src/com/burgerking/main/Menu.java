@@ -14,8 +14,11 @@ public class Menu {
         this.scanner = scanner;
     }
     public void go() {
-//       Burger burger = getBurger(getUserBurgerChoise());
+       Burger burger = getBurger(getUserBurgerChoise());
        List<Extras> extras = getUserExtrasChoise();
+
+       Meal meal = new Meal(burger, extras);
+        System.out.println(meal);
     }
 
     private int getUserBurgerChoise() {
@@ -35,8 +38,7 @@ public class Menu {
 
     private List<Extras> getUserExtrasChoise() {
         System.out.println("Enter a list of extras(comma separated)");
-//        System.out.println(Arrays.stream(Extras.values()).map(el -> el.getName()).collect(Collectors.joining(", ")));
-        System.out.println(Helpers.enumToString(Extras.values()));
+        System.out.println(Arrays.stream(Extras.values()).map(el -> el.getName() + " - " + el.getPrice()).collect(Collectors.joining(", ")));
         String[] input = scanner.nextLine().split(",");
         return  Arrays.stream(input).map(el -> Extras.valueOf(el.trim().toUpperCase().replace(" ", "_"))).toList();
 
